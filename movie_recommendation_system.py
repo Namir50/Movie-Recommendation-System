@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-# Load the MovieLens dataset (movies.csv)
 movies = pd.read_csv('movies.csv')
 
 # Check for and handle NaN values in the 'title' and 'genres' columns
@@ -16,7 +15,6 @@ tfidf_matrix = tfidf_vectorizer.fit_transform(movies['genres'])
 # Calculate cosine similarity between movies
 cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
 
-# Function to get movie recommendations based on content
 def get_movie_recommendations(movie_title):
     try:
         movie_index = movies[movies['title'] == movie_title].index[0]
